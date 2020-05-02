@@ -1,0 +1,10 @@
+.local/
+.cache/
+.bash_history
+**/airflow.cfg
+**/logs/
+**/__pycache__/
+**airflow-webserver.pid
+**airflow.db
+**/unittests.cfg
+**/output
