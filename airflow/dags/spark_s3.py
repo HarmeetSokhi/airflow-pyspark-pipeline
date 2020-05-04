@@ -18,15 +18,15 @@ default_args = {
 
 
 currentDirectory = os.getcwd()
-with DAG('spark_pipeline_s3', default_args=default_args, schedule_interval=None, catchup=False) as dag:
+with DAG('spark_pipeline_mock_s3', default_args=default_args, schedule_interval=None, catchup=False) as dag:
         t1 = BashOperator(
-                task_id='print_current_date',
+                task_id='Start_of_Dag',
                 bash_command='date'
         )
 
 
         t2 = DockerOperator(
-                task_id='spark_docker',
+                task_id='Spark_S3_Wordcount',
                 image='jupyter/all-spark-notebook',
                 api_version='auto',
                 auto_remove=True,
@@ -35,8 +35,8 @@ with DAG('spark_pipeline_s3', default_args=default_args, schedule_interval=None,
                 host_tmp_dir='/tmp', 
                 tmp_dir='/tmp',
                 volumes=[f'{currentDirectory}/pyspark:/home/jovyan'],
-                command='spark-submit --jars script/aws-java-sdk-1.7.4.jar,script/hadoop-aws-2.7.3.jar \
-                        --master local[*] script/hellospark_s3.py'
+                command='sh -c "pip install boto3 && \
+                        spark-submit --jars script/aws-java-sdk-1.7.4.jar,script/hadoop-aws-2.7.3.jar --master local[*] script/hellospark_s3.py"'
                 )
 
         t3 = BashOperator(

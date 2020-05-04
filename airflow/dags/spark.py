@@ -18,15 +18,15 @@ default_args = {
 
 
 currentDirectory = os.getcwd()
-with DAG('spark_pipeline', default_args=default_args, schedule_interval=None, catchup=False) as dag:
+with DAG('spark_pipeline_file', default_args=default_args, schedule_interval=None, catchup=False) as dag:
         t1 = BashOperator(
-                task_id='print_current_date',
+                task_id='Start_of_Dag',
                 bash_command='date'
         )
 
 
         t2 = DockerOperator(
-                task_id='spark_docker',
+                task_id='wordcount_file',
                 image='jupyter/all-spark-notebook',
                 api_version='auto',
                 auto_remove=True,
@@ -39,8 +39,8 @@ with DAG('spark_pipeline', default_args=default_args, schedule_interval=None, ca
         )
 
         t3 = BashOperator(
-                task_id='print_hello',
-                bash_command='echo "hello world"'
+                task_id='End_of_Dag',
+                bash_command='echo "Bye Bye. check output in the S3 bucket"'
         )
 
         t1 >> t2 >> t3
