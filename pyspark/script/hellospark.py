@@ -17,5 +17,9 @@ if __name__ == "__main__":
     wordCounts = words.map(lambda word: (word, 1)).reduceByKey(lambda a,b:a +b)
 
     # save the counts to output
-    shutil.rmtree('data/output')
+      
+    try:
+          shutil.rmtree('data/output')
+    except:
+        print("No output folder found")
     wordCounts.saveAsTextFile("data/output")

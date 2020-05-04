@@ -3,7 +3,7 @@ from airflow.operators.bash_operator import BashOperator
 from datetime import datetime, timedelta
 from airflow.operators.docker_operator import DockerOperator
 import os
-from boto.s3.connection import S3Connection
+
 
 default_args = {
         'owner'                 : 'airflow',
@@ -15,16 +15,6 @@ default_args = {
         'retries'               : 1,
         'retry_delay'           : timedelta(minutes=5)
 }
-
-TestBucketName = "mybucket"
-
-def setup():
-    import boto3
-    s3 = boto3.resource('s3')
-    s3.create_bucket(Bucket=TestBucketName)
-    s3.create_bucket(Bucket=TestBucketName, CreateBucketConfiguration={
-    'LocationConstraint': 'us-west-1'})
-    s3.Object(TestBucketName, 'hello.txt').put(Body=open('/tmp/hello.txt', 'rb'))
 
 
 currentDirectory = os.getcwd()

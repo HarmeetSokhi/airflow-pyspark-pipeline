@@ -4,7 +4,10 @@
 **/airflow.cfg
 **/logs/
 **/__pycache__/
-**airflow-webserver.pid
+**airflow-webserver*
 **airflow.db
 **/unittests.cfg
 **/output
+**.local
+**.localstack
+**.ivy2

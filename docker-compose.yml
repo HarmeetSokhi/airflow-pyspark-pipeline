@@ -1,0 +1,20 @@
+version: '3.2'
+services:
+  localstack:
+    image: localstack/localstack:latest
+    hostname: s3
+    container_name: s3
+    ports:
+      - '4572:4572' 
+    environment:
+      - SERVICES=s3:4572
+      - DEFAULT_REGION=ap-southeast-2
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - './.localstack:/tmp/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+ 
+
+ 

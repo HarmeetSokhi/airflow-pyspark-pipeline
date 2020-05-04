@@ -1,19 +1,15 @@
 ### Run the follwing to setup
 
 * Clone the repo
-* docker-compose up -d
-* pipenv run python setup.py
-* ps -ax |grep gunicorn
-* kill -9 $(lsof -i:8080 -t) 2> /dev/null
-* ps -ax |grep gunicorn
-* rm -f airflow/airflow-webserver.pid 
-* export AIRFLOW_HOME=$PWD/airflow-pyspark-pipeline/airflow
+* sh start.sh
+* go to another window
+* export AIRFLOW_HOME=$PWD/airflow
 * echo $AIRFLOW_HOME
-* pipenv install apache-airflow
-* pipenv install docker
-* pipenv run airflow initdb
-* pipenv run airflow scheduler
-* export AIRFLOW_HOME=$PWD/airflow-pyspark-pipeline/airflow
-* pipenv run airflow webserver -p 8080
+* pipenv run airflow webserver -p 8080 -D
 
 aws --endpoint-url=http://localhost:4572 s3 ls mybucket
+
+If in a docker 
+    curl host.docker.internal:4572
+
+spark fixed jar from https://github.com/suburbanmtman/hadoop-2.7.3-spark-localstack/tree/master/dist
