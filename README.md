@@ -2,7 +2,7 @@
 This repo has below sample pipelines :
 1. spark_pipeline_file: 
     * Reads from an input file 
-    * Spins up Pyspark Docker using docker operator
+    * Spins up Pyspark Docker using dockeroperator
     * runs wordcount for the input file in the data folder and
     * writes to an output file in the data folder of the repo.
 2. spark_pipeline_mock_s3: 

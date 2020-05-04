@@ -40,7 +40,7 @@ with DAG('spark_pipeline_file', default_args=default_args, schedule_interval=Non
 
         t3 = BashOperator(
                 task_id='End_of_Dag',
-                bash_command='echo "Bye Bye. check output in the S3 bucket"'
+                bash_command='echo "Bye Bye. check output folder for the results"'
         )
 
         t1 >> t2 >> t3

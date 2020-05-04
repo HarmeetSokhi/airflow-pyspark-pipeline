@@ -41,7 +41,7 @@ with DAG('spark_pipeline_mock_s3', default_args=default_args, schedule_interval=
 
         t3 = BashOperator(
                 task_id='End_of_Dag',
-                bash_command='echo "Bye'
+                bash_command='echo "Bye Bye. check output in the S3 bucket"'
         )
 
         t1 >> t2 >> t3
