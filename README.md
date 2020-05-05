@@ -28,7 +28,7 @@ Other Notes:
 
 * To view Bucket:   aws --endpoint-url=http://localhost:4572 s3 ls mybucket
 
-* In the docker to access locol host use the following: 
+* In the docker to access localhost use the following:
     * curl host.docker.internal:4572
 
 * Spark jar  to support S3 has been downloaded from https://github.com/suburbanmtman/hadoop-2.7.3-spark-localstack/tree/master/dist
