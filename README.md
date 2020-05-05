@@ -18,7 +18,7 @@ This repo has below sample pipelines :
 * Make sure you have pipenv installed
 * Run the following in the terminal in the cloned repo
     * sh start.sh
-* go to another window and run the following the cloned repo
+* go to another window and run the following in the cloned repo
     * sh start_airflow.sh
 * You should be able to see the airflow GUI at 
     * http://localhost:8080/admin/
@@ -33,4 +33,4 @@ Other Notes:
 
 * Spark jar  to support S3 has been downloaded from https://github.com/suburbanmtman/hadoop-2.7.3-spark-localstack/tree/master/dist
 
-* If you see default examples that set "load_examples = False" in airflow.cfg 
+* If you see default example dags provided by Apache-airflow then set "load_examples = False" in airflow.cfg 
