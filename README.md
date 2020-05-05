@@ -32,3 +32,5 @@ Other Notes:
     * curl host.docker.internal:4572
 
 * Spark jar  to support S3 has been downloaded from https://github.com/suburbanmtman/hadoop-2.7.3-spark-localstack/tree/master/dist
+
+* If you see default examples that set "load_examples = False" in airflow.cfg 
